@@ -1,0 +1,43 @@
+{
+  "name": "2_faces_net-backend",
+  "version": "1.0.0",
+  "description": "Backend server for 2_FACES_NET project",
+  "main": "server.js",
+  "private": true,
+  "scripts": {
+    "start": "pm2-runtime server.js"
+  },
+  "author": {
+    "name": "RedHitMark",
+    "email": "russodivito.marco@gmail.com",
+    "url": "https://redhitmark.github.io"
+  },
+  "contributors": [
+    {
+      "name": "Francesco Mercaldo",
+      "email": "francesco.mercaldo@unimol.it",
+      "url": "http://docenti.unimol.it/index.php?u=f.mercaldo"
+    },
+    {
+      "name": "Rosangela Casolare",
+      "email": "rosangela.casolare@unimol.it"
+    }
+  ],
+  "license": "GPL",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RedHitMark/2_FACES_NET-backend.git"
+  },
+  "bugs": "https://github.com/RedHitMark/2_FACES_NET-backend/issues",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "helmet": "^4.2.0",
+    "mongoose": "^5.11.13",
+    "morgan": "^1.10.0",
+    "pug": "^3.0.0",
+    "pm2": "^4.5.1"
+  }
+}

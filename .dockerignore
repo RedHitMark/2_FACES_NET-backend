@@ -1,0 +1,10 @@
+.git
+.idea
+.dockerignore
+.env
+.env_template
+.gitignore
+docker-compose.yml
+LICENSE
+README.md
+

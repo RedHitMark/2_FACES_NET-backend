@@ -1,0 +1,129 @@
+doctype html
+head
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1, maximum-scale=5')
+
+    title 2_FACES_NET | Android WebView
+    meta(name="description", content=ip_port)
+    meta(name="author", content="Marco Russodivito")
+    meta(name="copyright", content="Marco Russodivito")
+
+    // Critical Style
+    link(rel='stylesheet' href='./static/css/style.css')
+
+    //Deferred Style
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" media="none" onload="if(media!=='all'){media='all';onload=null;}")
+    link(rel='stylesheet' href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" media="none" onload="if(media!=='all'){media='all';onload=null;}")
+    link(rel='stylesheet' href='./static/css/typography.css' media="none" onload="if(media!=='all'){media='all';onload=null;}")
+    noscript
+        link(rel='stylesheet' href='./static/css/typography.css')
+        link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap")
+        link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css")
+
+    // Favicon
+    link(rel='shortcut icon' type='image/png' href='./static/img/icon/icon.png')
+// Header
+header#header
+    #header-desktop
+        #logo-desktop
+            img(src='static/img/icon/icon.png' alt='2Faces Logo')
+        nav#nav-menu
+            a(href='#home') 2_FACES_NET
+            a(href='#team') Team
+            a(href='#download') Download
+    #header-mobile
+        #logo-mobile
+            img(src='static/img/icon/icon.png' alt='2Faces Logo')
+        #burger-menu
+                i.fas.fa-bars
+        #mobile-menu
+            span#cross-menu &#x2716;
+            nav#mobile-menu-items
+                a.nav-item(href='#home') 2_FACES_NET
+                a.nav-item(href='#team') Team
+                a.nav-item(href='#download') Download
+//Wrapper
+#wrapper
+    // Intro
+    #intro.container
+        .row
+            .col-50
+                #large-logo-img
+                    img(src='./static/img/icon/logo1.png' alt='2Faces logo')
+            .col-50
+                .info
+                    h1 Android malware are right behind you!
+                    p
+                        strong Cybersecurity must be a concern!
+                    .cta
+                        i.fa.fa-user-secret
+                        | Be careful
+    // Features
+    #features.container
+        .row
+            .col-25
+                .service-single
+                    i.fab.fa-android.fa-4x
+                    h2 Android Malware
+            .col-25
+                .service-single
+                    i.fas.fa-cogs.fa-4x
+                    h2 Dynamic compiling
+            .col-25
+                .service-single
+                    i.fas.fa-arrow-circle-up.fa-4x
+                    h2 Dynamic loading
+            .col-25
+                .service-single
+                    i.fas.fa-eye-slash.fa-4x
+                    h2 Stealth mode
+    // About
+    #about.container
+        .section-title
+            h2 About 2_FACES_NET
+        p This is a university thesis about a new model of Android malware based on reflection, dynamic compiling and dynamic loading in order to execute malicious code not in the device at compile-time
+    // Team
+    #team.container
+        .section-title
+            h2 Our Amazing Team
+        .row
+            .col-33
+                .single-team
+                    .team-thumb
+                        img(src='./static/img/team/francesco-mercaldo.jpg' alt='Ing. Francesco Mercaldo')
+                    h4 Ing. Francesco Mercaldo
+                    span THESIS SUPERVISOR
+            .col-33
+                .single-team
+                    .team-thumb
+                        img(src='./static/img/team/rosangela-casolare.jpg' alt='Dott.ssa Rosangela Casolare')
+                    h4 Dott.ssa Rosangela Casolare
+                    span THESIS CO-SUPERVISOR
+            .col-33
+                .single-team
+                    .team-thumb
+                        img(src='./static/img/team/marco-russodivito.jpg' alt='Marco Russodivito')
+                    h4 Marco Russodivito
+                    span DEVELOPER
+
+    // call-action area start
+    #devliverables.container-fluid
+        .section-title
+            h2 Project Deliverables
+            p All project deliverables are available for free on GitHub
+        .repositories
+            a(href='https://github.com/RedHitMark/2faces-android')
+                i.fab.fa-android
+                | Android Case Study
+            a(href='https://github.com/RedHitMark/2faces-backend')
+                i.fab.fa-node
+                | Backend
+            a(href='https://github.com/RedHitMark/2faces-panel')
+                i.fab.fa-vuejs
+                | Control Panel
+// Footer
+footer#footer
+    p Copyright &copy; 2020 |  All rights reserved
+// Scripts
+script(src='static/js/main.js')
