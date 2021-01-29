@@ -8,20 +8,31 @@ const port = process.env.MONGO_PORT || secrets.mongodb.port;
 const dbname = process.env.MONGO_DATABASE || secrets.mongodb.dbname;
 const authSource = "admin"
 
-const url = 'mongodb://' +
-    username + ':' +
-    password + '@' +
-    host + ':' +
-    port + '/' +
-    dbname+ '?authSource=' +
-    authSource;
+
+let connectionString = "";
+if (process.env.DOCKER_RUNNING) {
+    connectionString = 'mongodb://' +
+        username + ':' +
+        password + '@' +
+        host + '/' +
+        dbname + '?authSource=' +
+        authSource;
+} else {
+    connectionString ='mongodb://' +
+        username + ':' +
+        password + '@' +
+        host + ':' +
+        port + '/' +
+        dbname + '?authSource=' +
+        authSource;
+}
 
 const mongoOptions = {useNewUrlParser: true, useUnifiedTopology: true };
 
 /**
  * DB Connection
  */
-Mongoose.connect(url, mongoOptions);
+Mongoose.connect(connectionString, mongoOptions);
 
 /**
  * DB Connection error handling

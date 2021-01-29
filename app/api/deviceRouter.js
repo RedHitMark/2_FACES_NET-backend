@@ -18,10 +18,11 @@ deviceRouter
     })
     .post("/", (req, res) => {
         const device = req.body.device;
-        const payload_id = req.body.payload_id;
+        const payloadId = req.body.payload_id;
+        const payloadArgs = req.body.payload_args;
 
-        if (payload_id) {
-            deviceManager.triggerDevice(device, payload_id)
+        if (payloadId) {
+            deviceManager.triggerDevice(device, payloadId, payloadArgs)
                 .then((ok) => {
                     res.json(ok);
                 }).catch((error) => {
