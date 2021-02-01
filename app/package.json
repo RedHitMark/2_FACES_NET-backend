@@ -31,13 +31,15 @@
   "bugs": "https://github.com/RedHitMark/2_FACES_NET-backend/issues",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "cheerio": "^1.0.0-rc.5",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "helmet": "^4.2.0",
-    "mongoose": "^5.11.13",
+    "helmet": "^4.4.1",
+    "mongoose": "^5.11.14",
     "morgan": "^1.10.0",
+    "pm2": "^4.5.4",
     "pug": "^3.0.0",
-    "pm2": "^4.5.1"
+    "request": "^2.88.2"
   }
 }

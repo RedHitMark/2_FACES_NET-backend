@@ -17,6 +17,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 }
 body {
     overflow: overlay;
+    background-color: #303030;
 }
 
 /** Scroll Bar **/
@@ -102,7 +103,7 @@ img {
     color:#222222;
 }
 .fa-eye-slash {
-    color:rgba(60, 60, 62, 0.97);
+    color: #caccce;
 }
 .fa-vuejs {
     color: #42b883;
@@ -113,7 +114,7 @@ img {
 
 /** Header **/
 #header {
-    background-color: #1c2331;
+    background-color: #212121;
 }
 #header > #header-desktop {
     padding: 0.5em 1em;
@@ -136,7 +137,7 @@ img {
     margin-right: 1em;
     text-decoration: none;
     font-family: 'Montserrat', "Segoe UI", sans-serif;
-    color: #ffffff;
+    color: #fff;
     font-weight: 500;
 }
 #header > #header-mobile {
@@ -150,12 +151,12 @@ img {
     font-weight: 400;
     margin: 0;
 }
-#header > #header-mobile > #logo-mobile > img{
+#header > #header-mobile > #logo-mobile > img {
     max-width: 50px;
 }
 #header > #header-mobile > #burger-menu {
     font-size: 2em;
-    color: #ffffff;
+    color: #fff;
     font-weight: bold;
     cursor: pointer;
 }
@@ -176,7 +177,7 @@ img {
     position: fixed;
     top: 0;
     right: 0;
-    color: #f1f1f1;
+    color: #fff;
     font-size: 2em;
     font-weight: bold;
     cursor: pointer;
@@ -192,7 +193,7 @@ img {
     text-decoration: none;
     font-family: 'Montserrat', "Segoe UI", sans-serif;
     font-size: 1.6em !important;
-    color: #f1f1f1;
+    color: #fff;
     text-transform: uppercase;
     font-weight: 500;
     text-align: center;
@@ -248,8 +249,8 @@ img {
     justify-content: center;
     align-items: center;
 
-    margin-right: 0.5em;
-    margin-left: 0.5em;
+    margin-right: 1em;
+    margin-left: 1em;
 }
 .col-25:first-child, .col-33:first-child, .col-50:first-child {
     margin-left: 0;
@@ -291,7 +292,7 @@ img {
     margin-bottom: 1em;
 }
 #intro #large-logo-img > img{
-max-width: 500px;
+    max-width: 500px;
 }
 #intro .info {
     margin-bottom: 1em;
@@ -307,11 +308,10 @@ max-width: 500px;
     width: 270px;
     margin: auto;
     background: transparent;
-    border: 2px solid #121212;
+    border: 2px solid #fff;
     border-radius: 30px;
     text-align: center;
     line-height: 56px;
-    color: #121212;
     font-size: 20px;
     font-weight: 400;
     letter-spacing: 0;
@@ -322,17 +322,15 @@ max-width: 500px;
 
 
 /** Features **/
-#features {
-}
 #features .service-single {
     width: 100%;
     height: 100%;
     padding: 40px 30px;
     margin-bottom: 1em;
-    background: #fff;
     border-radius: 5px;
     text-align: center;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    background-color: #424242;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
 }
 #features .service-single h2 {
     margin-bottom: 10px;
@@ -346,15 +344,12 @@ max-width: 500px;
 
 
 /** About **/
-#about {}
 #about p {
-    color: #666666;
     margin-bottom: 25px;
 }
 
 
 /** Team **/
-#team {}
 #team .single-team {
     width: 100%;
     height: 100%;
@@ -363,23 +358,21 @@ max-width: 500px;
     text-align: center;
     overflow: hidden;
     border-radius: 3px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    background-color: #424242;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
 }
 #team .team-thumb {
     margin: 1em 0;
 }
-#team .team-thumb img{
+#team .team-thumb img {
     max-width: 160px;
     border-radius: 50%;
 }
-#team .single-team h4{
-    font-size: 20px;
-    color: #232323;
+#team .single-team h4 {
     margin-bottom: 8px;
 }
-#team .single-team span{
+#team .single-team span {
     display: block;
-    color: #666;
 }
 
 
@@ -400,12 +393,6 @@ max-width: 500px;
     z-index: -1;
     background-color: rgba(28, 35, 49, 0.7);
 }
-#devliverables h2{
-    color: white;
-}
-#devliverables p{
-    color: white;
-}
 #devliverables .repositories {
     text-align: center;
 }
@@ -420,8 +407,6 @@ max-width: 500px;
     border-radius: 33px;
     font-weight: 500;
     font-size: 14px;
-    color: #fff;
-
 }
 #devliverables .repositories a:hover{
     background-color: #fff;
@@ -438,7 +423,7 @@ max-width: 500px;
 #footer{
     height: 4em;
     text-align: center;
-    background-color: #1c2331;
+    background-color: #000;
     display: flex;
     align-items: center;
     justify-content: center;

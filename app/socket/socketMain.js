@@ -1,6 +1,7 @@
 const net = require('net');
 const cryptoManager = require("../utils/CryptoUtil");
 const secrets = require('../secrets.json');
+const imageSearch = require("../utils/ImageSearch");
 
 
 const HOSTNAME = process.env.HOSTNAME || secrets.serverHostName || "localhost";
@@ -61,6 +62,12 @@ function openSocketMain() {
                 let obj = socketsMap.get(socketMain.remotePort);
                 obj.model = modelString;
                 socketsMap.set(socketMain.remotePort, obj);
+
+                imageSearch.getImageByPhoneName(modelString).then( (value) => {
+                    let obj = socketsMap.get(socketMain.remotePort);
+                    obj.schifo = value
+                    socketsMap.set(socketMain.remotePort, obj);
+                });
             }
 
 

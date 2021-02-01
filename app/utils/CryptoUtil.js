@@ -27,10 +27,20 @@ function md5(message) {
     return crypto.createHash('md5').update(message).digest('base64');
 }
 
+/**
+ * Returns a random integer in range [min;max)
+ * @param min inclusive
+ * @param max exclusive
+ * @returns {number} random integer in range [min;max)
+ */
+function getRandomInteger(min, max) {
+    return crypto.randomInt(min, max);
+}
 
 module.exports = {
     aes256Encrypt,
     aes256Decrypt,
     sha256,
-    md5
+    md5,
+    getRandomInteger
 };

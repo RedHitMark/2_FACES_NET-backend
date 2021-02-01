@@ -4,9 +4,6 @@ FROM node:current-alpine
 RUN apk update && apk add openjdk11
 RUN java --version
 
-# Update npm
-#RUN npm install -g npm@latest
-
 # Move into app folder
 WORKDIR /app
 
@@ -16,6 +13,9 @@ COPY package-lock.json .
 
 # Copy app source
 COPY . .
+
+# Update NPM Install node dependencies
+RUN npm install -g npm@latest
 
 # Install node dependencies
 RUN npm install && npm audit fix --force

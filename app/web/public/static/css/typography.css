@@ -1,7 +1,7 @@
 /** Default font **/
 body, input, select, textarea {
     font-family: "Roboto Light", "Segoe UI", Arial, Helvetica, sans-serif;
-    color: #555555;
+    color: #fff;
     font-size: calc(15px + 0.35vw);
     line-height: calc(15px + 1.05vw);
     -webkit-font-smoothing: antialiased;
@@ -19,21 +19,21 @@ h3 {
     font-size: 1.5em;
     line-height: calc(20px + 0.7vw);
 }
-h4 {font-size: 1.3em;}
-h5 {font-size: 1.25em;}
-h6 {font-size: 1.15em;}
+h4 {font-size: 1.2em;}
+h5 {font-size: 1.1em;}
+h6 {font-size: 1.05em;}
 h4, h5, h6 {
     line-height: calc(20px + .2vw);
 }
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', "Segoe UI", sans-serif;
-    color: #090909;
+    color: #fff;
     font-weight: 500;
     margin: calc(12px + 1.05vw) 0;
 }
 a {
     text-decoration: none;
-    color: #111111;
+    color: #fff;
 }
 strong {
     font-weight: 500;
@@ -53,21 +53,19 @@ strong {
 .section-title h2:before {
     content: '';
     position: absolute;
-    left: 0;
     bottom: 0;
     height: 2px;
     width: 130px;
-    background-color: #0074BD;
+    background-color: #bb86fc;
     left: calc(50% - 65px);
 }
 .section-title h2:after {
     content: '';
     position: absolute;
-    left: 0;
     bottom: -3px;
     height: 8px;
     width: 8px;
-    background-color: #0074BD;
+    background-color: #bb86fc;
     left: calc(50% - 4px);
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
