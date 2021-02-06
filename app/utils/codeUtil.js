@@ -21,7 +21,7 @@ function splitJavaCode(javaCode) {
 
     let i = 0;
     while(i <= stringLength) {
-        const newIndex = i + crypto.getRandomInteger(1, stringLength/6);
+        const newIndex = i + crypto.getRandomInteger(1, Math.floor(stringLength/6));
         const substringLenght = newIndex - i  + 1;
         javaPieces.push(javaCode.substr(i, substringLenght));
         i = newIndex + 1;

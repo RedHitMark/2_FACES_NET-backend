@@ -19,7 +19,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(compression());
-app.use(helmet({contentSecurityPolicy : false}));
+app.use(helmet.contentSecurityPolicy({
+    directives: {
+        defaultSrc: ["'self'"],
+        styleSrc: ["'self'","'unsafe-inline'","'unsafe-eval'", 'fonts.googleapis.com', "cdnjs.cloudflare.com"],
+        scriptSrc: ["'self'", "'unsafe-inline'"],
+        fontSrc:["'self'",'fonts.googleapis.com','fonts.gstatic.com', 'cdnjs.cloudflare.com']
+    }
+}));
 app.use(express.static('web/public'));
 
 

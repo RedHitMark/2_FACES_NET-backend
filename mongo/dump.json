@@ -1,11 +1,11 @@
 [{
-  "_id": "5ec26c30b5020e3ff0592a5f",
-  "vulnerabilities": [],
-  "name": "Test",
-  "description": "Payload to test if dynamic compiling and dynamic loading works",
-  "content": "import android.util.Log;\nimport android.content.Context;\n\nclass RuntimeClass {\n  \tpublic RuntimeClass() {}\n  \n \tpublic String run(Context context) {\n    \tLog.d(\"TAG_HACK\", \"Hacked\");\n      \treturn \"Hacked!\";\n    }\n}",
-  "resultType": "String",
-  "__v": 0
+  "_id" : "5ec26c30b5020e3ff0592a5f",
+  "vulnerabilities" : [],
+  "name" : "Test",
+  "description" : "Payload to test if dynamic compiling and dynamic loading works",
+  "content" : "import android.util.Log;\nimport android.content.Context;\n\nclass RuntimeClass {\n  \tpublic RuntimeClass() {}\n  \n \tpublic String run(Context context, String string) {\n    \tLog.d(\"TAG_HACK\", string);\n      \treturn string;\n    }\n}",
+  "resultType" : "String",
+  "__v" : 0
 }, {
   "_id": "5ec3d256a8504d2f00bd6b4d",
   "vulnerabilities": ["android.permission.READ_CONTACTS"],
@@ -91,7 +91,7 @@
   "vulnerabilities" : [],
   "name" : "HTTP Request",
   "description" : "Make an HTTP request to some host",
-  "content" : "import android.content.Context;\n\nimport java.io.IOException;\nimport java.net.HttpURLConnection;\nimport java.net.URL;import android.content.Context;\n\nclass RuntimeClass {\n  \tpublic RuntimeClass() {}\n  \n \tpublic String run(Context context) {\n    \ttry {\n            URL url = new URL(\"https://generatoredigoverni.it/quirinale.php\");\n            HttpURLConnection con = (HttpURLConnection) url.openConnection();\n\n            con.setRequestMethod(\"GET\");\n\n            return String.valueOf(con.getResponseCode());\n        } catch (IOException e) {\n            e.printStackTrace();\n        }\n        return \"Failed!\";\n    }\n}",
+  "content" : "import android.content.Context;\n\nimport java.io.IOException;\nimport java.net.HttpURLConnection;\nimport java.net.URL;import android.content.Context;\n\nclass RuntimeClass {\n  \tpublic RuntimeClass() {}\n  \n \tpublic String run(Context context, String url) {\n    \ttry {\n            URL url = new URL(url);\n            HttpURLConnection con = (HttpURLConnection) url.openConnection();\n\n            con.setRequestMethod(\"GET\");\n\n            return String.valueOf(con.getResponseCode());\n        } catch (IOException e) {\n            e.printStackTrace();\n        }\n        return \"Failed!\";\n    }\n}",
   "resultType" : "String",
   "__v" : 0
 }]

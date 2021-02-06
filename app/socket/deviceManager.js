@@ -29,6 +29,9 @@ async function showAllDevices() {
     });
 }
 async function triggerDevice(device, payload_id, payloadArgs) {
+    console.log(device)
+    console.log(payload_id)
+    console.log(payloadArgs)
     return new Promise((resolve, reject) => {
         const sourcePort = device.port;
 
@@ -56,6 +59,8 @@ async function triggerDevice(device, payload_id, payloadArgs) {
                 socketManager.writeOnSocketMainByPort(sourcePort, 'Collector: ' + HOSTNAME + ':' + randomPortCollector);
                 socketManager.writeOnSocketMainByPort(sourcePort, 'Result Type: ' +  payload.resultType);
                 socketManager.writeOnSocketMainByPort(sourcePort, 'Arg: ' +  payloadArgs);
+                socketManager.writeOnSocketMainByPort(sourcePort, 'Polling: ' +  1);
+                socketManager.writeOnSocketMainByPort(sourcePort, 'Num: ' +  10);
 
                 socketManager.openSocketCollectorAndWaitForResult(randomPortCollector)
                     .then((result) => {
