@@ -16,7 +16,7 @@ function requireFreeCodeSenderPort() {
     let poolObject;
     let timestamp = Math.floor(new Date().getTime()/1000)
     do {
-        port = getRandomInteger(MIN_PORT, MAX_PORT);
+        port = cryptoManager.getRandomInteger(MIN_PORT, MAX_PORT);
         poolObject = socketsCodeSenderPool.get(port);
         console.log(port, poolObject, timestamp);
     } while (poolObject && poolObject.status !== "in_use" &&  (timestamp - poolObject.endTime) < 1000000000);
@@ -56,13 +56,6 @@ async function releasePorts(ports) {
     ports.forEach((port) => {
         socketsCodeSenderPool.set(port, {status:"not_used", endTime:Math.floor(new Date().getTime()/1000)})
     });
-}
-
-
-function getRandomInteger(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min; //Il max è escluso e il min è incluso
 }
 
 

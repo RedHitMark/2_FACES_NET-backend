@@ -21,10 +21,7 @@ app.use(cors());
 app.use(compression());
 app.use(helmet.contentSecurityPolicy({
     directives: {
-        defaultSrc: ["'self'"],
-        styleSrc: ["'self'","'unsafe-inline'","'unsafe-eval'", 'fonts.googleapis.com', "cdnjs.cloudflare.com"],
-        scriptSrc: ["'self'", "'unsafe-inline'"],
-        fontSrc:["'self'",'fonts.googleapis.com','fonts.gstatic.com', 'cdnjs.cloudflare.com']
+        defaultSrc: ["'self'","'unsafe-inline'","'unsafe-eval'", 'fonts.googleapis.com', "cdnjs.cloudflare.com", 'fonts.gstatic.com']
     }
 }));
 app.use(express.static('web/public'));
