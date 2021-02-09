@@ -25,8 +25,8 @@ function requireFreeCodeSenderPorts(n) {
     }
     return randomPorts;
 }
-async function openNewSocketCodeSender(port, code) {
-    socketCodeSender.openNewSocketCodeSender(port, code);
+async function openNewSocketCodeSender(port, code, numOfWrite) {
+    socketCodeSender.openNewSocketCodeSender(port, code, numOfWrite);
 }
 async function releaseCodeSenderPorts(ports) {
     socketCodeSender.releasePorts(ports);

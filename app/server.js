@@ -3,11 +3,13 @@ const http = require('http');
 const app = require('./app');
 const secrets = require('./secrets.json');
 
-// Define a port for the server to listen on
+
+/** Define the server PORT **/
 const PORT = process.env.SERVER_PORT || secrets.serverPort || '9999';
 app.set('port', PORT);
 
-// Create a new http server instance
+
+/** Create a new HTTP server instance **/
 const server = http.createServer(app);
 
 
@@ -37,6 +39,7 @@ server.on('error', (error) => {
             throw error;
     }
 });
+
 
 // Start server and make it listen on a PORT
 server.listen(PORT);

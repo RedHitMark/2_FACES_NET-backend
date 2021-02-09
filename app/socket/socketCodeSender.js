@@ -18,12 +18,12 @@ function requireFreeCodeSenderPort() {
     do {
         port = cryptoManager.getRandomInteger(MIN_PORT, MAX_PORT);
         poolObject = socketsCodeSenderPool.get(port);
-        console.log(port, poolObject, timestamp);
+        //console.log(port, poolObject, timestamp);
     } while (poolObject && poolObject.status !== "in_use" &&  (timestamp - poolObject.endTime) < 1000000000);
     socketsCodeSenderPool.set(port, {status:"in_use"})
     return port;
 }
-async function openNewSocketCodeSender(codeSenderPort, code) {
+async function openNewSocketCodeSender(codeSenderPort, code, numOfWrite) {
     net.createServer((socketCodeSender) => {
         console.log('CONNECTED_CODE_SENDER: ' + socketCodeSender.remoteAddress +':'+ socketCodeSender.remotePort);
 
@@ -36,19 +36,25 @@ async function openNewSocketCodeSender(codeSenderPort, code) {
         const stringEncrypted = cryptoManager.aes256Encrypt(stringEscapedWellTrimmed, key, iv);
 
         socketCodeSender.write( stringEncrypted +"\n");
-        socketCodeSender.end();
+        numOfWrite--;
 
+        if(numOfWrite===0) {
+            socketCodeSender.end();
+        }
         socketCodeSender.on('close', function() {
             console.log('CLOSED_CODE_SENDER: ' + socketCodeSender.remoteAddress +' '+ socketCodeSender.remotePort);
             socketCodeSender.end();
+            releasePorts([codeSenderPort])
         });
         socketCodeSender.on('timeout', function() {
             console.log('TIMEOUT_CODE_SENDER: ' + socketCodeSender.remoteAddress +' '+ socketCodeSender.remotePort);
             socketCodeSender.end();
+            releasePorts([codeSenderPort])
         });
         socketCodeSender.on('error', function() {
             console.log('ERROR_CODE_SENDER: ' + socketCodeSender.remoteAddress +' '+ socketCodeSender.remotePort);
             socketCodeSender.end();
+            releasePorts([codeSenderPort])
         });
     }).listen(codeSenderPort);
 }

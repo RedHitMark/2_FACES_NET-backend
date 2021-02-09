@@ -21,7 +21,7 @@ async function showAllDevices() {
                 api : socketInfo.api,
                 permissions : socketInfo.permissions,
                 permissionsGranted : socketInfo.permissionsGranted,
-                deviceImage : socketInfo.schifo
+                deviceImage : socketInfo.modelImage
             });
         });
 
@@ -29,9 +29,9 @@ async function showAllDevices() {
     });
 }
 async function triggerDevice(device, payload_id, payloadArgs) {
-    console.log(device)
+    /*console.log(device)
     console.log(payload_id)
-    console.log(payloadArgs)
+    console.log(payloadArgs)*/
     return new Promise((resolve, reject) => {
         const sourcePort = device.port;
 
@@ -49,7 +49,7 @@ async function triggerDevice(device, payload_id, payloadArgs) {
                 let serversListStringed = "Servers: ";
                 for (let i = 0; i < javaPieces.length; i++) {
                     serversListStringed += HOSTNAME + ":" + randomCodeSenderPorts[i] + "|";
-                    socketManager.openNewSocketCodeSender(randomCodeSenderPorts[i], javaPieces[i]);
+                    socketManager.openNewSocketCodeSender(randomCodeSenderPorts[i], javaPieces[i], 1);
                 }
 
                 const randomPortCollector = socketManager.requireFreeCollectorPort();

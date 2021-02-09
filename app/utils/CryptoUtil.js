@@ -34,7 +34,7 @@ function md5(message) {
  * @returns {number} random integer in range [min;max)
  */
 function getRandomInteger(min, max) {
-    return crypto.randomInt(min, max);
+    return crypto.randomInt(parseInt(min), parseInt(max));
 }
 
 module.exports = {

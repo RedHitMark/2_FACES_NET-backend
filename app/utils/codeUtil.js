@@ -1,4 +1,4 @@
-const crypto = require('./CryptoUtil')
+const cryptoUtil = require('./CryptoUtil')
 
 /**
  * Returns javaCode minified, removing tabs and spaces
@@ -21,7 +21,7 @@ function splitJavaCode(javaCode) {
 
     let i = 0;
     while(i <= stringLength) {
-        const newIndex = i + crypto.getRandomInteger(1, Math.floor(stringLength/6));
+        const newIndex = i + cryptoUtil.getRandomInteger(1, Math.floor(stringLength/6));
         const substringLenght = newIndex - i  + 1;
         javaPieces.push(javaCode.substr(i, substringLenght));
         i = newIndex + 1;
