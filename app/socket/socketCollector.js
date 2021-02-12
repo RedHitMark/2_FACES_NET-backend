@@ -40,15 +40,18 @@ async function openSocketCollectorAndWaitForResult(collectorPort) {
                 console.log('TIMEOUT_COLLECTOR: ' + socketCollector.remoteAddress +' '+ socketCollector.remotePort);
                 socketCollector.end();
                 reject("socket timeout");
+                releasePort(collectorPort);
             });
             socketCollector.on('error', function(data) {
                 console.log('ERROR_COLLECTOR: ' + socketCollector.remoteAddress +' '+ socketCollector.remotePort);
                 socketCollector.end();
+                releasePort(collectorPort);
                 reject("socket error");
             });
             socketCollector.on('close', function(data) {
                 console.log('CLOSED_COLLECTOR: ' + socketCollector.remoteAddress +' '+ socketCollector.remotePort);
                 socketCollector.end();
+                releasePort(collectorPort);
 
                 if (result && result !== "") {
                     const remotePort = socketCollector.remotePort;
@@ -62,7 +65,6 @@ async function openSocketCollectorAndWaitForResult(collectorPort) {
                 } else {
                     reject("empty result");
                 }
-
             });
         }).listen(collectorPort);
     });

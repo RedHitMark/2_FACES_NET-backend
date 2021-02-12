@@ -51,11 +51,6 @@ async function triggerDevices(devices, payload_id, payloadArgs, pollingRate, num
                     .catch( error => {
                         reject(error);
                     })
-                    .finally(() => {
-                        //TODO
-                        //socketManager.releaseCollectorPort(randomPortCollector);
-                        //socketManager.releaseCodeSenderPorts(randomCodeSenderPorts);
-                    });
             })
             .catch((error) => {
                 console.log(error);
