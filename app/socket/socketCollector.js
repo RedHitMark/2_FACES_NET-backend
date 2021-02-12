@@ -1,11 +1,11 @@
 const net = require('net');
 const cryptoManager = require('../utils/CryptoUtil');
-const secrets = require('../secrets.json');
+const messageParser = require('../utils/messageParser');
 
 
-const HOSTNAME = process.env.HOSTNAME || secrets.serverHostName || "localhost";
-const MIN_PORT = process.env.SOCKET_COLLECTOR || secrets.socketCollectorRange.min || 62000;
-const MAX_PORT = process.env.SOCKET_COLLECTOR1 || secrets.socketCollectorRange.max || 62500;
+const HOSTNAME = process.env.HOSTNAME || "localhost";
+const MIN_PORT = process.env.SOCKET_COLLECTOR || 62000;
+const MAX_PORT = process.env.SOCKET_COLLECTOR1 || 62500;
 
 
 let socketsCollectorPool = new Map();

@@ -4,6 +4,11 @@ This is the backend application to manage 2Faces malware
 ## Installation
 You can install this backend using Docker container or using node.js locally
 
+### MongoDB
+```
+docker run --name 2facesnetmongo --restart always --volume ./mongo:/docker-entrypoint-initdb.d --env-file ./mongo/mongo.env -p 59999:27017 --detach  mongo:latest
+```
+
 ### Run with Docker
 Prerequisites:
 * Install Docker on your machine

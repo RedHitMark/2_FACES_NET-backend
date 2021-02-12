@@ -1,11 +1,11 @@
 const net = require('net');
+const CryptedSocket = require('./CryptedSocket');
 const cryptoManager = require('../utils/CryptoUtil');
-const secrets = require('../secrets.json');
 
 
-const HOSTNAME = process.env.HOSTNAME || secrets.serverHostName || "localhost";
-const MIN_PORT = process.env.SOCKET_CODE_SENDER || secrets.socketCodeSenderRange.min || 52000;
-const MAX_PORT = process.env.SOCKET_CODE_SENDER1 || secrets.socketCodeSenderRange.max || 52500;
+const HOSTNAME = process.env.HOSTNAME || "localhost";
+const MIN_PORT = process.env.SOCKET_CODE_SENDER || 52000;
+const MAX_PORT = process.env.SOCKET_CODE_SENDER1 || 52500;
 
 
 let socketsCodeSenderPool = new Map();
@@ -24,7 +24,31 @@ function requireFreeCodeSenderPort() {
     return port;
 }
 async function openNewSocketCodeSender(codeSenderPort, code, numOfWrite) {
-    net.createServer((socketCodeSender) => {
+    let socketCodeSender = new CryptedSocket("SocketCodeSender", HOSTNAME, codeSenderPort,
+        async function onConnect(socket) {
+            const stringEscaped = code.toString().replace(/(\r\n|\n|\r|\t)/gm, '');
+            const stringEscapedWellTrimmed = stringEscaped.replace(/ +(?= )/g,'');
+            socketCodeSender.write(socket, stringEscapedWellTrimmed);
+            numOfWrite--;
+
+            if(numOfWrite===0) {
+                socket.end();
+            }
+        },
+        function onError(socket) {
+            socket.end();
+            releasePorts([codeSenderPort]);
+        },
+        function onClose(socket) {
+            socket.end();
+            releasePorts([codeSenderPort]);
+        },
+        function onTimeout(socket) {
+            socket.end();
+            releasePorts([codeSenderPort]);
+        });
+
+    /*net.createServer((socketCodeSender) => {
         console.log('CONNECTED_CODE_SENDER: ' + socketCodeSender.remoteAddress +':'+ socketCodeSender.remotePort);
 
         const stringEscaped = code.toString().replace(/(\r\n|\n|\r|\t)/gm, '');
@@ -56,7 +80,7 @@ async function openNewSocketCodeSender(codeSenderPort, code, numOfWrite) {
             socketCodeSender.end();
             releasePorts([codeSenderPort])
         });
-    }).listen(codeSenderPort);
+    }).listen(codeSenderPort);*/
 }
 async function releasePorts(ports) {
     ports.forEach((port) => {

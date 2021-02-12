@@ -20,6 +20,7 @@ class CryptedSocket {
         this.port = port;
 
         this.server = net.createServer(socket => {
+            console.log(this.name + ' - CONNECTED: ' + this.port+":"+socket.remotePort );
             onConnection(socket);
 
             socket.on('data', (encryptedBuffer) => {
@@ -28,7 +29,6 @@ class CryptedSocket {
 
                 onData(socket, message);
             });
-
             socket.on('error', () => {
                 console.log(this.name + ' - ERROR: ' + socket.remoteAddress +' '+ socket.remotePort);
                 onError(socket);

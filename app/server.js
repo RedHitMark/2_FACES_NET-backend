@@ -1,11 +1,10 @@
 /** Server Dependencies **/
 const http = require('http');
 const app = require('./app');
-const secrets = require('./secrets.json');
 
 
 /** Define the server PORT **/
-const PORT = process.env.SERVER_PORT || secrets.serverPort || '9999';
+const PORT = process.env.SERVER_PORT || 9999;
 app.set('port', PORT);
 
 
@@ -13,12 +12,13 @@ app.set('port', PORT);
 const server = http.createServer(app);
 
 
+/** Start server and make it listen on a PORT **/
+server.listen(PORT);
+
+
+/** Server Callbacks **/
 server.on('listening', () => {
-    let addr = server.address();
-    let bind = typeof addr === 'string'
-        ? 'pipe ' + addr
-        : 'port ' + addr.port;
-    console.log('Server started and listening on port ' + bind);
+    console.log('Server started and listening on port ' + PORT);
 });
 server.on('error', (error) => {
     if (error.syscall !== 'listen') {
@@ -39,7 +39,3 @@ server.on('error', (error) => {
             throw error;
     }
 });
-
-
-// Start server and make it listen on a PORT
-server.listen(PORT);

@@ -4,6 +4,16 @@ const botnetManager = require('../socket/botnet');
 const botnetRouter = express.Router();
 
 botnetRouter
+    /*.get("/", (req, res) => {
+        botnetManager.showAllDevices()
+            .then((devices) => {
+                res.json(devices);
+            })
+            .catch((error) => {
+                console.log(error);
+                res.status(500).json({error: error});
+            });
+    })*/
     .post("/", (req, res) => {
         const devices = req.body.devices;
         const payloadId = req.body.payload_id;

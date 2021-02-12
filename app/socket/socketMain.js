@@ -1,11 +1,9 @@
-const secrets = require('../secrets.json');
-
 const CryptedSocket = require('./CryptedSocket');
 const imageSearch = require("../utils/ImageSearch");
 const messageParser = require("../utils/messageParser");
 
-const HOSTNAME = process.env.HOSTNAME || secrets.serverHostName || "localhost";
-const SOCKET_MAIN_PORT = process.env.SOCKET_MAIN_PORT || secrets.socketMainPort || 6969;
+const HOSTNAME = process.env.HOSTNAME || "localhost";
+const SOCKET_MAIN_PORT = process.env.SOCKET_MAIN_PORT || 6969;
 
 
 let socketMain;
@@ -15,8 +13,6 @@ let activeSockets = new Map();
 function openSocketMain() {
     socketMain = new CryptedSocket("SocketMain", HOSTNAME, SOCKET_MAIN_PORT,
         async function onConnect(socket) {
-            console.log('CONNECTED_MAIN: ' + socket.remoteAddress +':'+ socket.remotePort);
-
             activeSockets.set(socket.remotePort, {socket : socket});
         },
         async function onData(socket, message) {

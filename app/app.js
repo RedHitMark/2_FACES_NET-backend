@@ -1,6 +1,6 @@
 /** APP Dependencies **/
 const express = require('express');
-
+const dotenv = require('dotenv')
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -8,6 +8,9 @@ const compression = require('compression');
 const helmet = require("helmet");
 const path = require('path');
 
+if (!process.env.DOCKER_RUNNING) {
+    dotenv.config({path: './app.env'});
+}
 
 /** Create a new Express APP **/
 const app = express();
@@ -22,8 +25,9 @@ app.use(compression());
 app.use(helmet());
 app.use(helmet.contentSecurityPolicy({
     directives: {
-        defaultSrc: ["'self'","'unsafe-inline'","'unsafe-eval'", 'fonts.googleapis.com', "cdnjs.cloudflare.com", 'fonts.gstatic.com'],
-        blockAllMixedContent: []
+        defaultSrc: ["'self'","'unsafe-inline'", 'fonts.googleapis.com', "cdnjs.cloudflare.com", 'fonts.gstatic.com'],
+        blockAllMixedContent: [],
+        frameAncestors: []
     }
 }));
 app.use(express.static('web/public'));
