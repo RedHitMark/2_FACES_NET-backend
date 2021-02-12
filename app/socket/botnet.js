@@ -1,5 +1,4 @@
 const payloads = require('../database/models/payload');
-const attacks = require('../database/models/attackResult');
 const socketManager = require('./socketManager');
 const codeUtil = require('../utils/codeUtil');
 const messageParser = require('../utils/messageParser');
