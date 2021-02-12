@@ -1,3 +1,5 @@
+![SonarQube](https://github.com/RedHitMark/2_FACES_NET-backend/workflows/SonarQube/badge.svg)
+
 # 2_FACES_NET - Backend
 This is the backend application to manage 2Faces malware
 
