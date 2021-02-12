@@ -20,7 +20,7 @@ const app = express();
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cors({ origin: process.env.HOSTNAME}));
 app.use(compression());
 app.use(helmet());
 app.use(helmet.contentSecurityPolicy({
