@@ -1,9 +1,5 @@
 FROM node:current-alpine
 
-# Install jdk 11
-RUN apk update && apk add openjdk11
-RUN java --version
-
 # Move into app folder
 WORKDIR /app
 
@@ -11,14 +7,14 @@ WORKDIR /app
 COPY package.json .
 COPY package-lock.json .
 
-# Copy app source
-COPY . .
-
 # Update NPM Install node dependencies
-RUN npm install -g npm@latest
+RUN npm i -g npm@latest
 
 # Install node dependencies
-RUN npm install && npm audit fix --force
+RUN npm i && npm audit fix --force
+
+# Copy app source
+COPY . .
 
 # Entry point
 CMD ["npm", "run", "start"]
