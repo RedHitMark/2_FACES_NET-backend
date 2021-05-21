@@ -1,6 +1,14 @@
 version: "3.2"
 
 services:
+  # fronted
+  frontend:
+    container_name: 2_FACES_NET_panel
+    build: ./frontend
+    restart: always
+    ports:
+      - 80:9001
+
   # App
   app:
     container_name: 2_FACES_NET-backend_app
