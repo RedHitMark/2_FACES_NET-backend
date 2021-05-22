@@ -1,5 +1,5 @@
 const net = require('net');
-const cryptoManager = require('../utils/CryptoUtil');
+const cryptoManager = require('../utils/cryptoUtil');
 const messageParser = require('../utils/messageParser');
 
 

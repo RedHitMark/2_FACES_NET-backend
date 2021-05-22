@@ -1,6 +1,6 @@
 FROM node:current-alpine
 
-# Move into app folder
+# Move into backend folder
 WORKDIR /app
 
 # Copy dependencies json
@@ -13,7 +13,7 @@ RUN npm i -g npm@latest
 # Install node dependencies
 RUN npm i && npm audit fix --force
 
-# Copy app source
+# Copy backend source
 COPY . .
 
 # Entry point

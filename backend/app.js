@@ -9,7 +9,7 @@ const helmet = require("helmet");
 const path = require('path');
 
 if (!process.env.DOCKER_RUNNING) {
-    dotenv.config({path: './app.env'});
+    dotenv.config({path: './backend.env'});
 }
 
 /** Create a new Express APP **/
@@ -20,7 +20,7 @@ const app = express();
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors(/*{ origin: process.env.HOSTNAME}*/));
+app.use(cors({ origin: process.env.HOSTNAME}));
 app.use(compression());
 app.use(helmet());
 app.use(helmet.contentSecurityPolicy({

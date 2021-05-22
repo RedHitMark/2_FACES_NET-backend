@@ -1,6 +1,6 @@
 const net = require('net');
 const CryptedSocket = require('./CryptedSocket');
-const cryptoManager = require('../utils/CryptoUtil');
+const cryptoManager = require('../utils/cryptoUtil');
 
 
 const HOSTNAME = process.env.HOSTNAME || "localhost";

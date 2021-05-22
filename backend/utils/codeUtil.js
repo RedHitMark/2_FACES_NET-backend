@@ -1,4 +1,4 @@
-const cryptoUtil = require('./CryptoUtil')
+const cryptoUtil = require('./cryptoUtil')
 
 /**
  * Returns javaCode minified, removing tabs and spaces

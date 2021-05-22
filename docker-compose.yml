@@ -9,10 +9,10 @@ services:
     ports:
       - 80:9001
 
-  # App
-  app:
+  # backend
+  backend:
     container_name: 2_FACES_NET-backend_app
-    build: ./app
+    build: ./backend
     restart: always
     env_file: .env
     ports:

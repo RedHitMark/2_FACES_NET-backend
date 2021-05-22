@@ -1,4 +1,4 @@
-const cryptoUtil = require('../utils/CryptoUtil');
+const cryptoUtil = require('../utils/cryptoUtil');
 const net = require('net');
 
 class CryptedSocket {
