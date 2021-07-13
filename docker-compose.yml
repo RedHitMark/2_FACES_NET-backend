@@ -7,7 +7,7 @@ services:
     build: ./frontend
     restart: always
     ports:
-      - 80:9001
+      - 80:3455
 
   # backend
   backend:
